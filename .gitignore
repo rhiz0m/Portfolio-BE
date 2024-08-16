@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+.env
+
+# Build output
+dist/
+
+# Optional: npm-debug.log
+npm-debug.log*
