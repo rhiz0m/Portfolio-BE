@@ -2,9 +2,11 @@ import express from "express"
 import { Send } from "express"
 import bodyParser from "body-parser"
 import cors from "cors"
+import morgan from "morgan"
 
 const app = express()
 const port = 3000
+app.use(morgan("tiny"))
 
 app.use(
   cors({
