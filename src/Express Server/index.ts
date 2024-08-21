@@ -1,6 +1,4 @@
 import express from "express"
-import { Send } from "express"
-import bodyParser from "body-parser"
 import cors from "cors"
 import morgan from "morgan"
 
@@ -16,7 +14,7 @@ app.use(
   })
 )
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
 
