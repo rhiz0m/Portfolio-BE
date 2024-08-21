@@ -4,42 +4,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const body_parser_1 = __importDefault(require("body-parser"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 const port = 3000;
-let posts = [
-    {
-        id: 1,
-        title: "React. FE-Project",
-        date: "2024-08-20",
-        content: "This is a Front End project where I used an React-app to connect with the Backend",
-        author: "Andreas",
-    },
-    {
-        id: 2,
-        title: "Node/Express. Project",
-        date: "2024-08-20",
-        content: "This is a Back End project where I used an Node and Express to connect with the Front End",
-        author: "Andreas",
-    },
-    {
-        id: 3,
-        title: "IOS. Project",
-        date: "2024-08-20",
-        content: "This is an IOS-project where I used Swift and SwiftUI",
-        author: "Andreas",
-    },
-];
+app.use((0, cors_1.default)({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+}));
+app.use(body_parser_1.default.urlencoded({ extended: true }));
+app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.status(200).send(posts);
+    console.log(req.body);
 });
-app.post("/projects/reactnative", (req, res) => {
-    res.status(201).send({
-        id: 4,
-        title: "React Native. Project",
-        date: "2024-08-20",
-        content: "This is an React Native-project",
-        author: "Andreas",
-    });
+app.post("/submit", (req, res) => {
+    console.log(req.body);
 });
 app.put("/projects/web", (req, res) => {
     res.status(200).send({
@@ -71,3 +52,26 @@ app.delete("/projects/web", (req, res) => {
 app.listen(port, () => {
     console.log(`server running on ${port}`);
 });
+let posts = [
+    {
+        id: 1,
+        title: "React. FE-Project",
+        date: "2024-08-20",
+        content: "This is a Front End project where I used an React-app to connect with the Backend",
+        author: "Andreas",
+    },
+    {
+        id: 2,
+        title: "Node/Express. Project",
+        date: "2024-08-20",
+        content: "This is a Back End project where I used an Node and Express to connect with the Front End",
+        author: "Andreas",
+    },
+    {
+        id: 3,
+        title: "IOS. Project",
+        date: "2024-08-20",
+        content: "This is an IOS-project where I used Swift and SwiftUI",
+        author: "Andreas",
+    },
+];

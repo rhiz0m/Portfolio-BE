@@ -1,47 +1,30 @@
 import express from "express"
-import { send } from "process"
+import { Send } from "express"
+import bodyParser from "body-parser"
+import cors from "cors"
 
 const app = express()
 const port = 3000
 
-let posts = [
-  {
-    id: 1,
-    title: "React. FE-Project",
-    date: "2024-08-20",
-    content:
-      "This is a Front End project where I used an React-app to connect with the Backend",
-    author: "Andreas",
-  },
-  {
-    id: 2,
-    title: "Node/Express. Project",
-    date: "2024-08-20",
-    content:
-      "This is a Back End project where I used an Node and Express to connect with the Front End",
-    author: "Andreas",
-  },
-  {
-    id: 3,
-    title: "IOS. Project",
-    date: "2024-08-20",
-    content: "This is an IOS-project where I used Swift and SwiftUI",
-    author: "Andreas",
-  },
-]
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+)
+
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(express.json())
 
 app.get("/", (req, res) => {
   res.status(200).send(posts)
+  console.log(req.body)
 })
 
-app.post("/projects/reactnative", (req, res) => {
-  res.status(201).send({
-    id: 4,
-    title: "React Native. Project",
-    date: "2024-08-20",
-    content: "This is an React Native-project",
-    author: "Andreas",
-  })
+app.post("/submit", (req, res) => {
+  console.log(req.body)
 })
 
 app.put("/projects/web", (req, res) => {
@@ -77,3 +60,29 @@ app.delete("/projects/web", (req, res) => {
 app.listen(port, () => {
   console.log(`server running on ${port}`)
 })
+
+let posts = [
+  {
+    id: 1,
+    title: "React. FE-Project",
+    date: "2024-08-20",
+    content:
+      "This is a Front End project where I used an React-app to connect with the Backend",
+    author: "Andreas",
+  },
+  {
+    id: 2,
+    title: "Node/Express. Project",
+    date: "2024-08-20",
+    content:
+      "This is a Back End project where I used an Node and Express to connect with the Front End",
+    author: "Andreas",
+  },
+  {
+    id: 3,
+    title: "IOS. Project",
+    date: "2024-08-20",
+    content: "This is an IOS-project where I used Swift and SwiftUI",
+    author: "Andreas",
+  },
+]
