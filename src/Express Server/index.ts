@@ -1,14 +1,17 @@
 import express from "express"
 import cors from "cors"
 import morgan from "morgan"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app = express()
-const port = 3000
+const port = process.env.PORT
 app.use(morgan("tiny"))
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN,
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
