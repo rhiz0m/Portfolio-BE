@@ -30,6 +30,10 @@ app.post("/submit", (req, res) => {
   console.log(req.body)
 })
 
+app.post("/projects", (req, res) => {
+  
+})
+
 app.put("/projects/web", (req, res) => {
   res.status(200).send({
     id: 5,
