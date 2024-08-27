@@ -2,12 +2,13 @@ import express from "express"
 import cors from "cors"
 import morgan from "morgan"
 import dotenv from "dotenv"
-import projectsRouter from "./routes/projects"
+import projectsRoutes from "./routes/projectsRoutes"
+import reviewRoutes from "./routes/reviewRoutes"
 
 dotenv.config()
 
 const app = express()
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 app.use(morgan("tiny"))
 app.use(
@@ -20,6 +21,7 @@ app.use(
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get("/projectsapi", projectsRouter)
+app.use("/api/projects", projectsRoutes)
+app.use("/api/reviews", reviewRoutes)
 
-
+app.listen(port, () => console.log(`Server running on port ${port}`))

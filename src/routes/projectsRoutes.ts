@@ -3,7 +3,7 @@ import { projects } from "../models/projects"
 
 const router = Router()
 
-router.get("/projects", (req, res) => {
+router.get("/", (req, res) => {
   res.status(200).send(projects)
 })
 
