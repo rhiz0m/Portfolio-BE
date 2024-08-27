@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { projects } from "../models/projects"
+import { projects } from "../models/projectsModel"
 
 const router = Router()
 

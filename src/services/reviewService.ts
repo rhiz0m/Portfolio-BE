@@ -1,5 +1,5 @@
 import { v4 as uudiv4 } from "uuid"
-import { Review } from "../models/review"
+import { Review } from "../models/reviewModel"
 
 export const createReview = (
   title: string,
