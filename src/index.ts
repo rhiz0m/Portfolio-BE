@@ -25,3 +25,4 @@ app.use("/api/projects", projectsRoutes)
 app.use("/api/reviews", reviewRoutes)
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
+
