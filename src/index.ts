@@ -2,7 +2,6 @@ import express from "express"
 import cors from "cors"
 import morgan from "morgan"
 import dotenv from "dotenv"
-import projectsRoutes from "./routes/projectsRoutes"
 import reviewRoutes from "./routes/reviewRoutes"
 
 dotenv.config()
@@ -21,7 +20,6 @@ app.use(
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.use("/api/projects", projectsRoutes)
 app.use("/api/reviews", reviewRoutes)
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
